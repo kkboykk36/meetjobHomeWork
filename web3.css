@@ -1,0 +1,93 @@
+body{
+	margin: 0 auto;
+	height: 100%;
+}
+
+a{ 
+	text-decoration:none
+}
+
+/*自訂css id時，在樣式中要以#開頭*/
+#wrapper{
+	min-height: 100%;
+	margin-bottom: -100px;  /*等一下footer的高度會是100px*/
+}
+#banner{
+	/*border: 5px solid red; */  /*border邊框的意思 solid實體*/
+	width: 100%;   /*寬一率固定填滿畫面，以因應不同裝置瀏覽網頁，所以才會用%來表示*/
+	height: 70px;
+}
+
+#menu{
+	/*border: 5px solid green;*/  /*border邊框的意思*/
+	width: 100%;
+	height: 50px;
+	background-color: #DB7318;
+	color: #565756;  /*區塊內文字顏色*/
+}
+
+#content{
+	/*border: 5px solid blue;*/  /*border邊框的意思*/
+	width: 100%;
+	min-height: 300px;  /*min-height 最低高度*/
+}
+
+#footer{
+	/*border: 5px solid #cccccc;*/  /*border邊框的意思*/
+	width: 100%;
+	height: 100px;
+	background-color: #000000;
+	color: #ffffff;  /*區塊內文字顏色*/
+	text-align: center;  /* 對齊方式 center置中*/
+	clear: both;
+}
+
+#footer span{
+	font-size: 20px;
+}
+
+ul{
+	font-size: 16px;
+}
+
+#menu ul{
+	margin-left: 35%;
+}
+
+#menu li{
+	list-style: none;
+	float: left;
+	padding-top: 1em;
+	padding-right: 2em;
+	padding-left: 2em;
+	font-weight: bold;
+}
+
+
+
+#logo{
+	float: left;
+	margin-left: 25px;
+}
+
+#logo img{
+	width: 80px;
+}
+
+#fb{
+	float: right;
+	margin-right: 10px;
+}
+
+#fb img{
+	width: 50%;
+}
+
+#ig{
+	float: right;
+	margin-right: 10px;
+}
+
+#ig img{
+	width: 50%;
+}
