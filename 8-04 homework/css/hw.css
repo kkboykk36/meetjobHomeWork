@@ -1,0 +1,51 @@
+
+body{
+    margin: 0 auto;
+    height: 100%;
+    background-color: gray;
+}
+#head{
+    width:100%;
+    height: 100px;
+}
+
+#gun{
+    width:100%;
+    min-height: 200px;
+}
+/*自訂css id時在樣式中  要以"#"開頭  */
+
+/* class的呈現是以"."來作呈現，表示此樣式給多個div使用 */
+.info{
+    width: 22%;
+    height: 200px;
+    float: left;  /* 設定此區塊為浮動畫板，可靠左left，可靠右right*/
+    margin: 20px; /* 外部距離 內容同padding*/
+}
+
+.info img{
+    width: 100%;
+}
+
+
+/* padding:20px (指上下左右都20px)
+   padding(順序):上、右、下、左 (順時鐘)/10px 20px 30px 40px
+                :上下、左右/20px 30px
+                :上、左右、下/10px 20px 10px
+*/
+
+.social{
+    width: 50px;
+    height: 50px;
+    float: right;
+    margin: 50px 10px 5px 10px; /* 外部距離 內容同padding*/
+    /*clear: both;*/
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin: 5px 10px 0px 3%; /* 外部距離 內容同padding*/
+    /*clear: both;*/
+}
