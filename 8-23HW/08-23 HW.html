@@ -1,0 +1,184 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>8-23 HomeWork</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<style>
+			ul{
+				font-size: 16px;
+			}
+
+			#wrapper{
+				min-height: 100%;
+				margin-bottom: -100px;
+			}
+			#start{
+				width: 100%;   
+				height: 70px;
+			}			
+			#menu{
+				width: 100%;
+				height: 50px;
+				background-color: #DB7318;
+				color: #040814;  /*區塊內文字顏色*/
+			}
+			#content{
+				width: 100%;
+				min-height: 300px;  /*min-height 最低高度*/
+			}
+			#content img{
+				width: 100%;
+				min-height: 300px;  
+			}
+			#menu ul{
+				margin-left: 30%;
+			}
+
+			#menu li{
+				list-style: none;
+				float: left;
+				padding-top: 1em;
+				padding-right: 2em;
+				padding-left: 2em;
+				font-weight: bold;
+			}
+			#menulist{
+        		position:absolute;  /*定位 ： fixed 固定 absolute 依父位置做絕對位置*/
+        		height:70px;
+       		}
+       		#menulist , #menulist ul{
+	       		list-style: none;
+	        	padding:0;
+	        	margin:0;
+	       	}
+
+	       	#menulist li{
+	       	    float:left;
+	       	    background-color: #DB7318;
+	       	}
+
+	       	#menulist a {
+	       		color:#ffffff;
+	       		display:block;
+	       		text-decoration: none;
+	       		text-align: center;  /* 對齊方式 center置中*/
+	        	width:70px;
+	        }
+
+	       	#menulist li ul{
+	        	/*position: absolute;  /* 位置是絕對位置 */*/
+	        	left:auto;  /*對於絕對位置元素，會依內容需要的寬度來設置*/
+	        	width:60px;
+	        }
+			#end{
+				width: 100%;
+				height: 100px;
+				background-color: #000000;
+				color: #ffffff;  /*區塊內文字顏色*/
+				text-align: center;  /* 對齊方式 center置中*/
+				clear: both;
+			}
+			#end span{
+				font-size: 20px;
+			}
+			.active{
+        		background-color: #EBB66E
+       		}
+		</style>
+	</head>
+	<body>
+		<div id = "wrapper">
+			<div id ="start">
+				
+			</div>
+
+			<div id = "menu">
+				<ul id="menulist">
+					<li><a href="#">各項產品</a>
+	                	<ul class="submenu">
+	                		<li><a href="#">3C</a></li>
+	                		<li><a href="#">通訊</a></li>
+	                		<li><a href="#">移動裝置</a></li>
+	                	</ul>
+					</li>	
+
+					<li><a href="#">軟體服務</a>
+		                <ul class="submenu">
+		                	<li><a href="#">驅動程式</a></li>
+		                	<li><a href="#">韌體更新</a></li>
+		                </ul>
+					</li>
+
+					<li><a href="#">線上支援</a>
+		                <ul class="submenu">
+		                	<li><a href="#">3C說明書</a></li>
+		                	<li><a href="#">通訊說明書</a></li>
+		                	<li><a href="#">移動裝置說明書</a></li>
+		                </ul>
+					</li>
+
+					<li><a href="#">其他資訊</a>
+		                <ul class="submenu">
+		                	<li><a href="#">公告</a></li>
+		                	<li><a href="#">最新消息</a></li>
+		                </ul>
+					</li>
+
+					<li><a href="#">連絡我們</a></li>	
+				</ul>
+			</div>
+
+			<div id = "content">
+				<img src="img/background.jpg">
+				<button id="btn">區域收放(摺疊)</button>
+				<div id="blue" style="width: 100%;height:100px;background-color: #14DDF0">
+					要保持運動習慣喔!
+				<br>
+				</div>
+				<div style="width: 100%;height:300px">
+					<span id="msg"></span>
+					<p></p>
+					年齡:<input type="number" id ="age" name="age"/>
+					<br/>
+					<button id ="btn2">送出</button>
+				</div>
+			</div>
+		</div>
+		<div id ="end">
+			<span>軟體工程師帥一波Copyright@ 2022 By Alen</span>
+			<br />
+			<span>聯絡我們 電話:02-12345678</span>
+		</div>
+		
+		<script>
+			$(document).ready(function(){
+            	$("#menulist li ul").hide();
+             	$("#menulist li").hover(
+                	function(){
+                   		$(this).find("ul").slideDown("fast");
+                    	$(this).find("a:first").addClass("active");
+                    },function(){
+                  		$(this).find(".submenu").fadeOut("fast");
+                  		$(this).find("a").removeClass("active");
+                    })
+        	});
+
+        	$(document).ready(function(){
+			    $("#btn").click(function(){
+					$("#blue").slideToggle();
+				})
+			});
+
+			$(document).ready(function(){
+				$("#btn2").click(function(){
+					var age = $("#age").val();
+					if (age > 15 && age < 50){
+						$("#msg").text("符合年齡規範!");
+					}else{
+						$("#msg").text("不符合年齡規範!");
+					}
+			  	})
+			});
+		</script>
+	</body>
+</html>
