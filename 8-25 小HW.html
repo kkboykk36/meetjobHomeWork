@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表單</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<form id ="form1" action="order.php" method="post">
+			<!--
+			元素區塊，被包起來的視為同一區塊，此區塊會有邊框
+			-->
+			<fieldset> <!--元素區塊標籤-->
+				<legend>帳單資訊</legend><!--legend圖例標籤-->
+
+				<div>
+					<label for="name">姓名</label>
+					<!--label用來讓表單來控制說明標題
+						for 屬性對應的是表單元件的id名稱
+						在寫label時 可以將for屬性省略不寫
+					-->
+					<input type="text" id="name"/>
+				</div>
+				<div>
+					<label for="address">地址</label>
+					<input type="text" id="address"/>
+				</div>
+				<div>
+					<span>付款方式</span>
+					<input type="radio" name="payment" value="transfer" id="transfer" checked />
+					<label for="credit">轉帳</label>
+					<input type="radio" name="payment" value="creditcard" id="creditcard" />
+					<label for="transfer">信用卡</label>
+				</div>
+				<div id="credit">
+					<div>
+						<label for="cardNumber">卡號</label>
+						<input type="text" id="cardNumber" disabled/>
+						<!--
+							attr('disabled',true) 表示不可以輸入
+							attr('disabled',false) 表示可以輸入
+						-->
+					</div>
+					<div>
+						<label for="expiration">有效期限</label>
+						<input type="text" id="expiration" disabled/>
+					</div>
+				</div>
+			</fieldset>
+
+			<!--
+			元素區塊，被包起來的視為同一區塊，此區塊會有邊框
+			-->
+			<fieldset> <!--元素區塊標籤-->
+				<legend>送貨地址</legend><!--圖例標籤-->
+				<div>
+					<label for="hideShip">同帳單地址</label>
+					<input type="checkbox" id="hideShip" checked />
+				</div>
+				<div id="newName">
+					<label for="shipName">姓名:</label>
+					<input type="text" id="shipName"/>
+				</div>
+
+				<div id="newAddress">
+					<label for="shipAddress">地址:</label>
+					<input type="text" id="shipAddress"/>
+				</div>
+			</fieldset>
+
+		</form>
+		<script>
+
+
+			$(document).ready(function(){
+				$("#hideShip").attr("checked",true);
+
+				
+				if ($("#hideShip").is(":checked")){
+					$("#newName").slideUp();
+					$("#newAddress").slideUp();
+				}else{
+					$("#newName").slideDown();
+					$("#newAddress").slideUp();
+				}
+
+				$("#creditcard").change(function(){
+					$("#cardNumber").attr("disabled",false);
+					$("#expiration").attr("disabled",false);
+				})
+
+				$("#transfer").change(function(){
+					$("#cardNumber").attr("disabled",true);
+					$("#expiration").attr("disabled",true);
+				})
+			});
+			
+		</script>
+	</body>
+</html>
