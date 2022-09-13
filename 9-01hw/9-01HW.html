@@ -1,0 +1,214 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>9-01 HomeWork</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<style>
+			ul{
+				font-size: 16px;
+			}
+
+			#wrapper{
+				min-height: 100%;
+				margin-bottom: -100px;
+			}
+			#start{
+				width: 100%;   
+				height: 70px;
+			}			
+			#menu{
+				width: 100%;
+				height: 50px;
+				background-color: #DB7318;
+				color: #040814;  /*區塊內文字顏色*/
+			}
+			#content{
+				width: 100%;
+				min-height: 300px;  /*min-height 最低高度*/
+			}
+			#content img{
+				width: 100%;
+				min-height: 300px;  
+			}
+			#menu ul{
+				margin-left: 30%;
+			}
+
+			#menu li{
+				list-style: none;
+				float: left;
+				padding-top: 1em;
+				padding-right: 2em;
+				padding-left: 2em;
+				font-weight: bold;
+			}
+			#menulist{
+        		position:absolute;  /*定位 ： fixed 固定 absolute 依父位置做絕對位置*/
+        		height:70px;
+       		}
+       		#menulist , #menulist ul{
+	       		list-style: none;
+	        	padding:0;
+	        	margin:0;
+	       	}
+
+	       	#menulist li{
+	       	    float:left;
+	       	    background-color: #DB7318;
+	       	}
+
+	       	#menulist a {
+	       		color:#ffffff;
+	       		display:block;
+	       		text-decoration: none;
+	       		text-align: center;  /* 對齊方式 center置中*/
+	        	width:70px;
+	        }
+
+	       	#menulist li ul{
+	        	/*position: absolute;  /* 位置是絕對位置 */*/
+	        	left:auto;  /*對於絕對位置元素，會依內容需要的寬度來設置*/
+	        	width:60px;
+	        }
+			#end{
+				width: 100%;
+				height: 100px;
+				background-color: #000000;
+				color: #ffffff;  /*區塊內文字顏色*/
+				text-align: center;  /* 對齊方式 center置中*/
+				clear: both;
+			}
+			#end span{
+				font-size: 20px;
+			}
+			.active{
+        		background-color: #EBB66E
+       		}
+		</style>
+	</head>
+	<body>
+		<div id = "wrapper">
+			<div id ="start">
+				
+			</div>
+
+			<div id = "menu">
+				<ul id="menulist">
+					<li><a href="#">TVBS</a>
+	                	<ul class="submenu">
+	                		<li><a href="#">運動</a></li>
+	                		<li><a href="#">財經</a></li>
+	                		<li><a href="#">國際</a></li>
+	                	</ul>
+					</li>	
+
+					<li><a href="#">女人我最大</a>
+		                <ul class="submenu">
+		                	<li><a href="#">彩妝</a></li>
+		                	<li><a href="#">穿搭</a></li>
+		                </ul>
+					</li>
+
+					<li><a href="#">地球黃金線</a>
+		                <ul class="submenu">
+		                	<li><a href="#">汽車</a></li>
+		                	<li><a href="#">機車</a></li>
+		                	<li><a href="#">國外汽機車報導</a></li>
+		                </ul>
+					</li>
+
+					<li><a href="#">其他資訊</a>
+		                <ul class="submenu">
+		                	<li><a href="#">公告</a></li>
+		                	<li><a href="#">最新消息</a></li>
+		                </ul>
+					</li>
+
+					<li><a href="#">連絡我們</a></li>	
+				</ul>
+			</div>
+
+			<div id = "content">
+				<ul class="img">
+					<li><img src="img/01.jpg"></li>
+					<li><img src="img/02.jpg"></li>
+					<li><img src="img/03.jpg"></li>
+					<li><img src="img/01.jpg"></li>
+				</ul>
+
+				<div class="btn left">&lt;</div>
+				<div class="btn right">&gt;</div>
+
+				<div style="width: 100%;height:300px">
+					<span id="msg"></span>
+					<p></p>
+					年齡:<input type="number" id ="age" name="age"/>
+					<br/>
+					<button id ="btn2">送出</button>
+				</div>
+			</div>
+		</div>
+		<div id ="end">
+			<span>軟體工程師帥一波Copyright@ 2022 By Alen</span>
+			<br />
+			<span>聯絡我們 電話:02-12345678</span>
+		</div>
+		
+		<script>
+			$(document).ready(function(){
+            	$("#menulist li ul").hide();
+             	$("#menulist li").hover(
+                	function(){
+                   		$(this).find("ul").slideDown("fast");
+                    	$(this).find("a:first").addClass("active");
+                    },function(){
+                  		$(this).find(".submenu").fadeOut("fast");
+                  		$(this).find("a").removeClass("active");
+                    })
+        	});
+
+        	$(document).ready(function(){
+			    $("#btn").click(function(){
+					$("#blue").slideToggle();
+				})
+			});
+
+			$(document).ready(function(){
+				$("#btn2").click(function(){
+					var age = $("#age").val();
+					if (age > 15 && age < 50){
+						$("#msg").text("符合年齡規範!");
+					}else{
+						$("#msg").text("不符合年齡規範!");
+					}
+			  	})
+			var i = 0;
+    		var clone = $(".banner .img li").first().clone();  //複製第一張圖片
+    		$(".banner .img").append(clone);  // 將複製的第一張貼到最後面去
+
+    		var size = $(".banner .img li").size();  //抓個數
+
+
+    		/*自動播放*/
+    		// setInterval 會不斷的呼叫函數   ，2秒呼叫一次
+    		var t = setInterval(function(){
+    			i++;
+    			move();
+    		},2000);
+
+    		function move(){
+    			if ( i == size){
+    				$(".banner .img").css({left:0});
+    				i=1;
+    			}
+    			if (i == -1){
+    				$(".banner .img").css({left:-(size -1) * 500});
+    				i = size - 2;
+    			}
+    			$(".banner .img").stop().animate({left:-i * 500},500);
+    			/* 動畫 ，往左邊拉-500 px  , 會隨著 i 改變，而越拉越多*/
+    		}
+			});
+		</script>
+	</body>
+</html>
